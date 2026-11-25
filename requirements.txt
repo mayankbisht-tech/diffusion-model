@@ -1,0 +1,22 @@
+# Dependencies of gnn_rag_image_pipeline.ipynb
+# Run used: Google Colab, Python 3.13, NVIDIA Tesla T4 (16 GB), CUDA build of PyTorch.
+#
+# Exact versions of the paper run were not recorded. To pin them, run this in the
+# same Colab session after the notebook's install cell, and commit the result:
+#   !pip freeze | grep -iE "^(torch|diffusers|transformers|accelerate|safetensors|huggingface-hub|numpy|scipy|pillow|matplotlib|gradio|remotezip)==" > requirements-lock.txt
+#
+# Important: do NOT install torchao. Colab's preinstalled torchao breaks recent
+# diffusers ("cannot import name 'FqnToConfig'"); the notebook uninstalls it.
+
+torch               # CUDA build; Colab's preinstalled version
+diffusers           # Stable Diffusion 1.5 (DDIM, DPM-Solver++) and SD-Turbo pipelines
+transformers        # CLIP ViT-B/32 (retrieval) and ViT-L/14 (judge)
+accelerate
+safetensors
+huggingface-hub
+numpy
+scipy               # sparse graph operations
+pillow
+matplotlib
+gradio              # human-rating app and chatbot (Parts B and C only)
+remotezip           # downloads only the needed AwA2 images from the remote zip
